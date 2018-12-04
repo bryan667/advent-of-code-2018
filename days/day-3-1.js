@@ -1,10 +1,12 @@
 const fs = require('fs')
+const express = require('express')
+const app = express()
+
+const jsonData = []
 
 try {
     const data = fs.readFileSync('./misc/input-day-3.txt')
     var readableData = data.toString().split('\n')
-
-    console.log(readableData)
 
     //Regex
     const idRegex = /^#\d+/g
@@ -12,17 +14,27 @@ try {
     const locVerticalRegex = /\d+(?=:)/g
     const shpHorizontalRegex = /\d+(?=x)/g
     const shpVerticalRegex = /\d+$/g
-    const location = []
+
 
     readableData.forEach((item)=> {
-        console.log(item)
-        console.log(item.match(idRegex))
-        console.log(item.match(locHorizontalRegex))
-        console.log(item.match(locVerticalRegex))
-        console.log(item.match(shpHorizontalRegex))
-        console.log(item.match(shpVerticalRegex))        
+        let tempObj = {
+            plain: item,
+            id: item.match(idRegex)[0],
+            horizontalLoc: item.match(locHorizontalRegex)[0],
+            verticalLoc: item.match(locVerticalRegex)[0],
+            horizontalShp:item.match(shpHorizontalRegex)[0],
+            verticalShp: item.match(shpVerticalRegex)[0]
+        }
+        jsonData.push(tempObj)
     })
-
 }catch(err){
     console.log(err.stack)
 }
+
+
+app.get('/api/day-3', function(req, res){
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.json(jsonData)
+})
+
+app.listen('3000')
