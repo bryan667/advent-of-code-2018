@@ -13,7 +13,7 @@ try {
     const locHorizontalRegex = /\d+(?=,)/g
     const locVerticalRegex = /\d+(?=:)/g
     const shpHorizontalRegex = /\d+(?=x)/g
-    const shpVerticalRegex = /\d+$/g
+    const shpVerticalRegex = /\d+$/gm
 
 
     readableData.forEach((item)=> {
