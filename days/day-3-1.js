@@ -1,6 +1,10 @@
 const fs = require('fs')
+const path = require('path');
 const express = require('express')
 const app = express()
+
+app.use(express.static(path.join(__dirname, '../client')));
+const Awpath = path.join(__dirname, '../client')
 
 const jsonData = []
 
@@ -31,10 +35,13 @@ try {
     console.log(err.stack)
 }
 
+app.get('/', function(req, res){
+    res.sendFile(Awpath + '/day-3.html')
+})
 
 app.get('/api/day-3', function(req, res){
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(jsonData)
 })
 
-app.listen('3000')
+app.listen('3000', ()=> console.log('Listening at port 3000'))
