@@ -18,12 +18,12 @@ try {
 
     readableData.forEach((item)=> {
         let tempObj = {
-            plain: item,
+            // plain: item,
             id: item.match(idRegex)[0],
-            horizontalLoc: item.match(locHorizontalRegex)[0],
-            verticalLoc: item.match(locVerticalRegex)[0],
-            horizontalShp:item.match(shpHorizontalRegex)[0],
-            verticalShp: item.match(shpVerticalRegex)[0]
+            x: item.match(locHorizontalRegex)[0],
+            y: item.match(locVerticalRegex)[0],
+            width:item.match(shpHorizontalRegex)[0],
+            height: item.match(shpVerticalRegex)[0]
         }
         jsonData.push(tempObj)
     })
