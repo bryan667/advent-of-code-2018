@@ -36,10 +36,10 @@ try {
 }
 
 app.get('/', function(req, res){
-    res.sendFile(Awpath + '/day-3.html')
+    res.sendFile(Awpath + '/day-3-2.html')
 })
 
-app.get('/api/day-3', function(req, res){
+app.get('/api/day-3-2', function(req, res){
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(jsonData)
 })

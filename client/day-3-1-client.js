@@ -37,6 +37,7 @@ function drawSquares (data) {
                 ||
                 (pixelData[0] === 0 && pixelData[1] === 0 && pixelData[2] === 0 && pixelData[3] === 0 ))
             ){
+                
                 overlapPixels = overlapPixels + 1
             }
         }
